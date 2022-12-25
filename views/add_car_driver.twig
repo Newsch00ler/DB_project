@@ -1,0 +1,34 @@
+{% extends "__content.twig" %}
+
+{% block content %}
+<div class="album py-5">
+    <div class="container">
+        <h1 style="text-align: center;">{{header1}}</h1>
+        <div class="container" style="padding: 0px;">
+            <div class="row justify-content-center">
+                <div class="col col-xl-5">
+                    <div class="card" style="height: 190px; border-radius: 15px;">
+                        <form action="" method="POST">
+                            <div class="card-body p-4" style="height: 335px;">
+                                <div class="container justify-content-center d-flex">
+                                    <h4>Добавить {{header2}}</h4>
+                                </div>
+                                <table>
+                                    <tr>
+                                        <th style="width: 260px">{{header3}}</th>
+                                        <th><input type="text" name="number" class="form-control"></th>
+                                    </tr>
+                                </table>
+                                <br>
+                                <div class="justify-content-center d-flex">
+                                    <button class="button" style="padding: 10px;">Добавить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

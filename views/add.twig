@@ -1,0 +1,34 @@
+{% extends "__content.twig" %}
+
+{% block content %}
+<table>
+    <tr>
+        <th style="width: 260px">Удостоверение</th>
+        <th><select class="form-control" name="driver_license">
+            {% for driver in driver_licenses %}
+                <option value="{{driver}}">
+                    {{driver}}
+                </option>
+            {% endfor %}
+        </select>
+    </th>
+    </tr>
+    <tr>
+        <th>Статья</th>
+        <th><select class="form-control" name="driver_license">
+            {% for article in articles %}
+                <option value="{{article.0}}">
+                    {{article.0}}
+                </option>
+            {% endfor %}
+        </select> </th>
+    </tr>
+    <tr>
+        <th>Дата</th>
+        <th><input type="text" name="driver_license" class="form-control" value="{{driver.driver_license}}"></th>
+    </tr>
+</table>
+<form action="/" method="POST">
+    <button class="button" type="submit">Добавить</button>
+</form>   
+{% endblock %}

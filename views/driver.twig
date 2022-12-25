@@ -1,0 +1,134 @@
+{% extends "__content.twig" %}
+
+{% block content %}
+<div class="album py-5">
+    <div class="container">
+        <h1 style="text-align: center;">Водитель</h1>
+        <div class="container" style="padding: 0px;">
+            <div class="row justify-content-center" >
+                <div class="col col-md-9 col-lg-7 col-xl-5">
+                    <div class="card" style="border-radius: 15px;">
+                        <form action="" method="POST">
+                            <div class="card-body p-4">
+                                <div class="container justify-content-center d-flex">
+                                    <h4>Общая информация</h4> 
+                                </div>
+                                <table>
+                                    <tr>
+                                        <th style="width: 260px">Фамилия</th>
+                                        <th><input type="text" name="name" class="form-control" value="{{driver.full_name}}"></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Адресс проживания</th>
+                                        <th><input type="text" name="address" class="form-control" value="{{driver.address}}"></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Водительское удостоверение</th>
+                                        <th><input type="text" name="driver_license" class="form-control" readonly="readonly" value="{{driver.driver_license}}"></th>
+                                    </tr>
+                                </table>
+                                <br>
+                                <div class="d-flex justify-content-evenly rounded-3 p-2 mb-2" style="background-color: #efefef;">
+                                    <div style="text-align:center;">
+                                        <p class="small text-muted mb-1">Нарушения</p>
+                                        <p class="mb-0">
+                                            {% if count_violations.0 == 0 %}
+                                                0          
+                                            {% else %}
+                                                {{count_violations.0}}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="px-3" style="text-align:center;">
+                                        <p class="small text-muted mb-1">Автомобили</p>
+                                        <p class="mb-0">
+                                            {% if count_auto.0 == 0 %}
+                                                0
+                                            {% else %}
+                                                {{count_auto.0}}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="container justify-content-center d-flex">    
+                                    <button class="button" style="padding: 10px;">Изменить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col col-md-9 col-lg-7 col-xl-5">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-4">
+                            <div class="container justify-content-center d-flex">
+                                <h4>Добавить нарушение</h4>
+                            </div>
+                            <div class="justify-content-center d-flex">
+                                <form action="/add-offense">
+                                    <input type="hidden" name="id" value="{{id}}">
+                                    <input type="hidden" name="type" value="driver">
+                                    <button class="button" style="padding: 10px;">Добавить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-xl-5">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-4">
+                            <div class="container justify-content-center d-flex">
+                                <h4>Добавить автомобиль</h4>
+                            </div>                            
+                            <div class="justify-content-center d-flex">
+                                <form action="/add">
+                                    <input type="hidden" name="id" value="{{id}}">
+                                    <input type="hidden" name="type" value="driver">
+                                    <button class="button" style="padding: 10px;">Добавить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h4 style="text-align: center;">Нарушения</h4>
+            <br>
+            <div class="row">
+                <table class="table table-striped table-dark" style="text-align:center;">
+                    <theads>
+                        <tr>
+                            {% for col_name in column_name %}
+                                <th scope="col">{{col_name}}</th>
+                            {% endfor %}
+                            <th>Удаление</th>
+                        </tr>
+                      </thead>
+                    <tbody>
+                        {% for object in objects %}
+                            <tr>
+                                <td>
+                                    <a>{{object[0]}}</a>
+                                </td>
+                                {% for i in 1..count %} 
+                                    <td>{{object[i]}}</td>
+                                {% endfor %}
+                                <td>
+                                    <form action="/delete" method="POST">
+                                        <button class="button delete">
+                                            <input type="hidden" name="id" value="{{object.ID}}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

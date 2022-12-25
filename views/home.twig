@@ -1,0 +1,50 @@
+{% extends "__content.twig" %}
+
+{% block content %}
+<section style="background-color: rgb(224, 224, 224);">
+    <div class="album py-5">
+        <div class="container">
+            <h1>Главная</h1>
+            <h2>Наши дороги - ваша безопасность, поэтому всё через жопу</h2>
+            <div class="row justify-between">
+                <div class="col">
+                    <div class="card shadow-sm text-center">
+                        <a href="{{first_url}}">
+                            <svg class="bd-placeholder-img card-img-top scale" height="225px" style="cursor: pointer">
+                                <rect width="622px" height="225px" fill="rgba(255,0,0)"></rect>
+                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" style="font-size: 25pt;">{{first_card_header}}</text>
+                            </svg>
+                        </a>
+                        <div class="card-body justify-content-center">
+                            <p class="card-text ">{{first_card_text}}</p>
+                            <form action="{{first_url}}">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <button class="button" href="">Посмотреть</button>
+                                </div>
+                            </form>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm text-center">
+                        <a href="{{second_url}}">
+                            <svg class="bd-placeholder-img card-img-top scale" height="225px" style="cursor: pointer">
+                                <rect width="622px" height="225px" fill="rgba(0,0,255)"></rect>
+                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" style="font-size: 25pt;">{{second_card_header}}</text>
+                            </svg>
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text">{{second_card_text}}</p>
+                            <form action="{{second_url}}">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <button class="button">Посмотреть</button>
+                                </div>
+                            </form>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

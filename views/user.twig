@@ -1,0 +1,64 @@
+{% extends "__content.twig" %}
+
+{% block content %}
+<section style="background-color: rgb(224, 224, 224);">
+    <div class="album py-5">
+        <div class="container">
+            <h1 style="text-align: center;">Ваш профиль</h1>
+            <div class="container" style="padding: 0px;">
+                <div class="row justify-content-center">
+                    <div class="col col-md-9 col-lg-7 col-xl-5">
+                        <div class="card" style="border-radius: 15px;">
+                            <form action="/user" method="POST">
+                                <div class="card-body p-4">
+                                    <table>
+                                        <tr>
+                                            <th style="width: 260px">Фамилия</th>
+                                            <th><input type="text" name="name" class="form-control" value="{{driver.full_name}}"></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Адресс проживания</th>
+                                            <th><input type="text" name="address" class="form-control" value="{{driver.address}}"></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Водительское удостоверение</th>
+                                            <th><input type="text" name="driver_license" class="form-control" readonly="readonly" value="{{driver.driver_license}}"></th>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <div class="d-flex justify-content-evenly rounded-3 p-2 mb-2" style="background-color: #efefef;">
+                                        <div style="text-align:center;">
+                                            <p class="small text-muted mb-1">Нарушения</p>
+                                            <p class="mb-0">
+                                                {% if count_violations.0 == 0 %}
+                                                    0
+                                                {% else %}
+                                                    {{count_violations.0}}
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                        <div class="px-3" style="text-align:center;">
+                                            <p class="small text-muted mb-1">Автомобили</p>
+                                            <p class="mb-0">
+                                                {% if count_auto.0 == 0 %}
+                                                    0
+                                                {% else %}
+                                                    {{count_auto.0}}
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="justify-content-center d-flex">
+                                        <button class="button" style="padding: 10px;">Изменить</button>  
+                                    </div>                      
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
